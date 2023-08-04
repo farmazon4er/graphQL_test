@@ -1,0 +1,28 @@
+# PostgreSQL. Versions 9.3 and up are supported.
+
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: taypi_development
+  username: postgres
+  password: postgres
+  host: localhost
+  port: 5432
+
+
+test:
+  <<: *default
+  database: taypi_test
+
+production:
+  <<: *default
+  database: taypi_production
+  username: taypi
+  password: <%= ENV['TAYPI_DATABASE_PASSWORD'] %>
