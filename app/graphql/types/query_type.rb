@@ -17,6 +17,10 @@ module Types
     null: false,
     description: "Return list of Artists"
 
+    field :artist,
+    [Types::ArtistType], "Find a artist by ID" do
+      argument :id, ID
+    end
 
     def items
       Item.all
@@ -24,6 +28,11 @@ module Types
 
     def artists
       Artist.all
+    end
+
+    def artist(id:)
+      # binding.pry
+      [Artist.find(id)]
     end
   end
 end
