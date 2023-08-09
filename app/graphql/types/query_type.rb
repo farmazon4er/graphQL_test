@@ -31,7 +31,6 @@ module Types
     end
 
     def artist(id:)
-      # binding.pry
       [Artist.find(id)]
     end
   end
