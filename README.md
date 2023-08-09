@@ -1,24 +1,37 @@
-# README
+ruby version 3.1.4
+rails version 6.1.7.4
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+for start 
+`rails db:create` 
+`rails db:migrate`
+`rails db:seed`
+bundle exec rspec 
+`foreman start`
+http://localhost:3000/graphiql
+maybe need gem install foreman
 
-Things you may want to cover:
+some query and mutation
 
-* Ruby version
+query getArtist($id: ID!) {
+  artist(id: $id) {
+    firstName
+    lastName
+    items {
+      id
+      title
+      description
+    }
+  }
+}
 
-* System dependencies
+variables {"id": 99}
 
-* Configuration
+ mutation createArtist($firstName: String!, $lastName: String!) {
+  createArtist(input: {firstName: $firstName, lastName: $lastName}) {
+    id
+    firstName
+    lastName
+  }
+}
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+variables {"firstName": "asdasd", "lastName": "asdasd"}
