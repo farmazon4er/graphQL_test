@@ -14,7 +14,7 @@ class GraphqlChannel < ApplicationCable::Channel
       # Make sure the channel is in the context
       channel: self,
     }
-``
+
     result = TaypiSchema.execute(
       query: query,
       context: context,

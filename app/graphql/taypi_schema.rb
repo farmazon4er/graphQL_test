@@ -8,7 +8,7 @@ class TaypiSchema < GraphQL::Schema
   use GraphQL::Dataloader
 
   #for subscription
-  use GraphQL::AnyCable, broadcast: true
+  use GraphQL::AnyCable, broadcast: true, default_broadcastable: true
 
   # GraphQL-Ruby calls this when something goes wrong while running a query:
   def self.type_error(err, context)
