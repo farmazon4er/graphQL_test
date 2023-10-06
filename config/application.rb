@@ -13,6 +13,7 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
 require "sprockets/railtie"
+require_relative "../lib/middleware/verify_token"
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -24,6 +25,7 @@ module Taypi
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    config.middleware.insert_before ActionDispatch::HostAuthorization, Middleware::VerifyToken
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
